@@ -11,8 +11,7 @@
                     <div class="card h-100">
                         <div class="row no-gutters">
                             <div class="col-xl-5 col-lg-2 col-md-4">
-                                <img src="{{ $row->image}}"
-                                    class="img-fluid" alt="">
+                                <img src="{{ $row->image}}" class="img-fluid" alt="">
                             </div>
                             <div class="col-xl-7 col-lg-10 col-md-8">
                                 <div class="card-body">
