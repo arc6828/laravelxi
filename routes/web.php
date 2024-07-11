@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -38,3 +39,20 @@ Route::get('/active/teacher', function () {
     return view("active.teacher", compact("teachers"));
 })->name('active.teacher');
 
+// Route::get('/category/sport', function () {
+//     return "<h1>This is sport Category Page</h1>";
+// });
+// Route::get('/category/politic', function () {
+//     return "<h1>This is politic Category Page</h1>";
+// });
+// Route::get('/category/entertain', function () {
+//     return "<h1>This is entertain Category Page</h1>";
+// });
+// Route::get('/category/auto', function () {
+//     return "<h1>This is auto Category Page</h1>";
+// });
+
+Route::get('/category/sport', [CategoryController::class, "sport"]);
+Route::get('/category/politic', [CategoryController::class, "politic"]);
+Route::get('/category/entertain', [CategoryController::class, "entertain"]);
+Route::get('/category/auto', [CategoryController::class, "auto"]);
