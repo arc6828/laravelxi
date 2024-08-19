@@ -214,7 +214,8 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                         data-bs-toggle="dropdown">
-                        <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <img src="{{ asset('admin/assets/img/profile-img.jpg') }}" alt="Profile"
+                            class="rounded-circle">
                         <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
                     </a><!-- End Profile Iamge Icon -->
 
@@ -256,18 +257,23 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-
+                        {{-- <li>
+    <a class="dropdown-item d-flex align-items-center" href="#">
+        <i class="bi bi-box-arrow-right"></i>
+        <span>Sign Out</span>
+    </a>
+</li> --}}
                         <li>
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <a class="dropdown-item d-flex align-items-center" href="{{ route('logout')}}" onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                        this.closest('form').submit();">
                                     <i class="bi bi-box-arrow-right"></i>
                                     <span>Sign Out</span>
                                 </a>
                             </form>
-
                         </li>
 
                     </ul><!-- End Profile Dropdown Items -->
