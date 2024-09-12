@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LicenseController;
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehicleController;
@@ -80,4 +81,8 @@ require __DIR__.'/auth.php';
 Route::resource('license', LicenseController::class);
 Route::resource('user', UserController::class);
 Route::resource('vehicle', VehicleController::class);
+
+Route::resource('movie', MovieController::class);
+
+Route::get('movie-filter', [MovieController::class,'indexFilter']);
 
