@@ -6,6 +6,7 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehicleController;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -76,7 +77,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::resource('license', LicenseController::class);
 Route::resource('user', UserController::class);
@@ -84,5 +85,14 @@ Route::resource('vehicle', VehicleController::class);
 
 Route::resource('movie', MovieController::class);
 
-Route::get('movie-filter', [MovieController::class,'indexFilter']);
+Route::get('movie-filter', [MovieController::class, 'indexFilter']);
 
+Route::get('/test/pdf', function () {
+    $a = "hello";
+    $b = "world";
+    $c = "ทดสอบภาษาไทย";
+
+    $pdf = Pdf::loadView('testpdf', compact('a','b','c'));
+    $pdf->setOption("defaultFont","Sarabun");
+    return $pdf->stream("test.pdf");
+});
