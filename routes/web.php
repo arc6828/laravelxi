@@ -6,6 +6,7 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehicleController;
+use App\Livewire\Counter;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
 
@@ -96,3 +97,6 @@ Route::get('/test/pdf', function () {
     $pdf->setOption("defaultFont","Sarabun");
     return $pdf->stream("test.pdf");
 });
+
+
+Route::get('/counter', Counter::class);

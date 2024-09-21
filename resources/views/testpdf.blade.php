@@ -54,11 +54,21 @@
         </table>
         <br />
         <div class="row">
-            <div class="col-xs-6"></div>
-            <div class="col-xs-6">
-                <p><strong>Subtotal:</strong> 300 บาท</p>
-                <p><strong>Tax (7%):</strong> 21 บาท</p>
-                <p><strong>Total:</strong> 321 บาท</p>
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4 text-right">
+                <p><strong>Subtotal:</strong></p>
+                <p><strong>Tax (7%):</strong></p>
+                <p><strong>Total:</strong></p>
+            </div>
+            <div class="col-xs-1 text-right">
+                <p>300 </p>
+                <p>21 </p>
+                <p>321 </p>
+            </div>
+            <div class="col-xs-3">
+                <p>บาท</p>
+                <p>บาท</p>
+                <p>บาท</p>
             </div>
         </div>
         <br />
