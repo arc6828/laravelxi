@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -44,4 +45,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function userLeaveRequests()
+    {
+        return $this->hasMany(LeaveRequest::class, 'user_id');
+    }
+
+    public function approverLeaveRequests()
+    {
+        return $this->hasMany(LeaveRequest::class, 'approver_id');
+    }
+
 }

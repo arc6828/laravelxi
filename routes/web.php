@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LeaveRequestController;
 use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProfileController;
@@ -100,3 +101,16 @@ Route::get('/test/pdf', function () {
 
 
 Route::get('/counter', Counter::class);
+
+// Route::resource('leave-request', LeaveRequestController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::middleware(['role:admin,guest'])->group(function () {
+        Route::resource('leave-request', LeaveRequestController::class)->except(['edit','update']);
+    });
+    Route::middleware(['role:admin'])->group(function () {
+        Route::resource('leave-request', LeaveRequestController::class)->only(['edit','update']);
+        Route::get("dashboard-leave", function () {
+            return view("dashboard-leave");
+        });
+    });
+});
