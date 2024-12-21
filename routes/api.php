@@ -2,6 +2,7 @@
 
 use App\Models\LeaveRequest;
 use App\Models\Movie;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -60,4 +61,10 @@ Route::get("leave-request-summary-type/user/{user_id}", function ($user_id) {
         "leave_requests" => $leave_requests,
     ];
     return $data;
+});
+
+
+Route::get('/product', function () {
+    $products = Product::all(); // Fetch all products
+    return response()->json($products); // Return as JSON
 });
