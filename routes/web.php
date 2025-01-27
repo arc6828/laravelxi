@@ -191,3 +191,28 @@ Route::get('/product-submit', function (Request $request) {
     $data = $request->all();
     return "Name: " . $data['name'];
 })->name('product.submit');
+
+// จัดเก็บในโฟลเดอร์ storage/app/public/uploads
+
+Route::post('/upload', function (Request $request) {
+    // ตรวจสอบว่าไฟล์ถูกอัปโหลดหรือไม่
+    if ($request->hasFile('file') && $request->file('file')->isValid()) {
+        $file = $request->file('file');
+        
+        // ตรวจสอบขนาดไฟล์ (ขีดจำกัด 2MB)
+        if ($file->getSize() > 2 * 1024 * 1024) {
+            return 'ไฟล์มีขนาดเกินขีดจำกัด';
+        }
+        
+        // ตรวจสอบประเภทของไฟล์ (ยอมรับเฉพาะภาพ)
+        if (!in_array($file->getMimeType(), ['image/jpeg', 'image/png'])) {
+            return 'ไฟล์ไม่ใช่ประเภทภาพที่รองรับ';
+        }
+        
+        // เก็บไฟล์
+        $path = $file->store('uploads');
+        return 'ไฟล์ถูกอัปโหลดที่: ' . $path;
+    }
+    
+    return 'ไม่พบไฟล์ที่อัปโหลด';
+});
