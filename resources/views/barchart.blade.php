@@ -27,7 +27,7 @@
         async function fetchProductData() {
             try {
                 const response = await fetch(
-                '{{ url('api/product') }}'); // Replace with your Laravel API endpoint
+                "{{ url('api/product') }}"); // Replace with your Laravel API endpoint
                 const products = await response.json();
                 drawChart(products);
             } catch (error) {
